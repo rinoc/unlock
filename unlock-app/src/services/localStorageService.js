@@ -1,3 +1,7 @@
+/**
+ * DEPRECATED: we are not storing to localstorage anymore!
+ */
+
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem('state')

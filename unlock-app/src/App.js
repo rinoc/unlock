@@ -7,7 +7,6 @@ import createHistory from 'history/createBrowserHistory'
 
 // Services
 import { initWeb3Service } from './services/web3Service'
-import { saveState, loadState } from './services/localStorageService'
 
 // Components
 import Unlock from './components/Unlock'
@@ -35,7 +34,7 @@ class App extends Component {
       network: {
         name: 'dev', // default?
       },
-    }, loadState())
+    })
 
     // Create a history of your choosing (we're using a browser history in this case)
     this.browserHistory = createHistory()
@@ -53,10 +52,6 @@ class App extends Component {
       initialState,
       composeEnhancers(applyMiddleware(...middlewares)),
     )
-
-    this.store.subscribe(() => {
-      saveState(this.store.getState())
-    })
 
     // connects to the web3 endpoint
     initWeb3Service({
